@@ -52,7 +52,7 @@ public class NewsArrayAdapter extends ArrayAdapter<NewsStory> {
 
         // Handle Image
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 
         if (!TextUtils.isEmpty(currentStory.getThumbnailUrl())) {
             Picasso.with(getContext())

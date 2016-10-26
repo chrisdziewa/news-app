@@ -3,8 +3,9 @@ package com.example.android.newsapp;
 import android.app.LoaderManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +15,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     // Permanent url
     public static final String API_URL = "http://content.guardianapis.com/search?section=world&show-fields=byline%2Cbody%2Cthumbnail&api-key=test";
 
-    private NewsArrayAdapter mAdapter;
+    private NewsRecycler mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView newsList = (ListView) findViewById(R.id.news_list);
+        RecyclerView newsList = (RecyclerView) findViewById(R.id.recyclerView);
+        newsList.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         // Temporary data
         ArrayList<NewsStory> newsArray = new ArrayList<NewsStory>();
 
-        mAdapter = new NewsArrayAdapter(MainActivity.this, newsArray);
+        mAdapter = new NewsRecycler(MainActivity.this, newsArray);
 
         newsList.setAdapter(mAdapter);
 
