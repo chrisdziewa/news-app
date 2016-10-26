@@ -1,6 +1,8 @@
 package com.example.android.newsapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,8 +40,17 @@ public class NewsStoryHolder extends RecyclerView.ViewHolder {
         mAuthorView.setText(mNewsStory.getAuthors());
         Picasso.with(mContext)
                 .load(mNewsStory.getThumbnailUrl())
-                .resize(320, 180)
+                .resize(300, 169)
                 .into(mImageView);
+
+        mTitleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent();
+                browserIntent.setData(Uri.parse(mNewsStory.getUrl()));
+                mContext.startActivity(browserIntent);
+            }
+        });
     }
 
     // For use with Picasso

@@ -56,4 +56,5 @@ public class NewsRecycler extends RecyclerView.Adapter<NewsStoryHolder> {
         mNewsStories = new ArrayList<NewsStory>();
         notifyDataSetChanged();
     }
+
 }
